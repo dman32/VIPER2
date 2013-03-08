@@ -17,6 +17,7 @@ namespace VIPER2
 {
     public static class RIO
     {
+        
         public static Double lastCmd1, lastCmd2, lastCmd3, lastCmd4;
         public static int moveCount = 0;
         public static String errorName = "Controller";
@@ -85,7 +86,7 @@ namespace VIPER2
             {
                 ErrorMsg.ThrowError("Can't send command ["+command.ToString()+"]: Valve controller is unable to accept commands in this state ["+currentState.ToString()+"].", "Valve Control Warning", ErrorMsg.MsgLevel.warning, null);
                 return;
-            }*/
+            }
             String cmd = "";
             switch (command)
             {
@@ -250,13 +251,13 @@ namespace VIPER2
             ints[86] = Int16.Parse(Configuration.get("cannode15", Configuration.DictionaryName.VIPER2RioConfig)[0].ToString());
             ints[87] = Int16.Parse(Configuration.get("cannode16", Configuration.DictionaryName.VIPER2RioConfig)[0].ToString());
             ints[88] = Int16.Parse(Configuration.get("valverate", Configuration.DictionaryName.VIPER2RioConfig)[0].ToString());
-            sendCommand(COMMAND.SENDCFG, ints);*/
-            sendCommand(COMMAND.SENDCFG, dbls);
+            sendCommand(COMMAND.SENDCFG, ints);
+            sendCommand(COMMAND.SENDCFG, dbls);*/
         }
         
         public static void downloadFile()
         {
-            String inputfilepath = @"C:\VIPER2 Data\Viper2.dat";
+            /*String inputfilepath = @"C:\VIPER2 Data\Viper2.dat";
             string ftphost = Configuration.get("ipaddress", Configuration.DictionaryName.RioConfig)[0].ToString();
             string ftpfilepath = Configuration.get("datafile", Configuration.DictionaryName.RioConfig)[0].ToString();
 
@@ -270,17 +271,18 @@ namespace VIPER2
                 FileStream file = File.Create(inputfilepath);
                 file.Write(fileData, 0, fileData.Length);
                 file.Close();
-            }
+            }*/
         }
 
-        /* public static Boolean cfgErrorsExist()
+         public static Boolean cfgErrorsExist()
          {
-             UInt16 errors1 = (UInt16)RIO.getParameter(RIO.PARAMETER_NAME.ERROR1).raw;
+             /*UInt16 errors1 = (UInt16)RIO.getParameter(RIO.PARAMETER_NAME.ERROR1).raw;
              UInt16 errors2 = (UInt16)RIO.getParameter(RIO.PARAMETER_NAME.ERROR2).raw;
              UInt16 errors3 = (UInt16)RIO.getParameter(RIO.PARAMETER_NAME.ERROR3).raw;
              UInt16 errors4 = (UInt16)RIO.getParameter(RIO.PARAMETER_NAME.ERROR4).raw;
              UInt16 errors5 = (UInt16)RIO.getParameter(RIO.PARAMETER_NAME.ERROR5).raw;
-             return ((errors1 + errors2 + errors3 + errors4 + errors5) > 0);
-         }*/
+             return ((errors1 + errors2 + errors3 + errors4 + errors5) > 0);*/
+             return false;
+         }
     }
 }

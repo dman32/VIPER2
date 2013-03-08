@@ -20,7 +20,7 @@ namespace VIPER2.Forms
         }
         private void fillProjects()
         {
-            DataTable dt = Database.select("SELECT * FROM projects", null);
+            DataTable dt = SEALib.Database.OLEDB.Select("SELECT * FROM projects", null);
             cbProjects.Items.Clear();
             for (int i = 0; i < dt.Rows.Count; i++)
                 cbProjects.Items.Add(new MTGCComboBoxItem(dt.Rows[i]["idtest"].ToString(), Convert.ToDateTime(dt.Rows[i]["creationdate"].ToString()).ToShortDateString(), dt.Rows[i]["project"].ToString(), dt.Rows[i]["vehicle"].ToString()));

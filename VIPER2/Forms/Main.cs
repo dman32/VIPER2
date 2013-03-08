@@ -13,23 +13,34 @@ namespace VIPER2.Forms
 {
     public partial class Main : Form
     {
-        
+        private System.Timers.Timer tmrUpdate = new System.Timers.Timer();
+
         public Main()
         {
             InitializeComponent();
-            Database.init("test.accdb");
+            SEALib.Configuration.Init("viper2.xml");
+            SEALib.Database.OLEDB.Init("viper2.accdb");
+            cRIO.init();
             reindexWeights();
             reindexFLRestraints();
             reindexFRRestraints();
             reindexRLRestraints();
             reindexRRRestraints();
             cbPlatform.SelectedIndex = 0;
+            tmrUpdate.Interval = 1;
+            tmrUpdate.Elapsed += new System.Timers.ElapsedEventHandler(tmrUpdate_Elapsed);
+            tmrUpdate.Start();
+        }
+
+        void tmrUpdate_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            toolStripStatusLabel1.Text = cRIO.currentState.ToString() + cRIO.getBufferedSends();
+            //updateControlText(txtDescription, cRIO.missedBeats.ToString(), true);
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            TCPDebug tcpd = new TCPDebug();
-            tcpd.Show();
+            SEALib.TCP.startConnecting("dataclient", 500);
         }
 
         private void dgvAxleWeights_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -131,6 +142,24 @@ namespace VIPER2.Forms
         {
             OpenProject op = new OpenProject();
             op.Show();
+        }
+
+        private void updateControlText(Control c, string text, bool concatenate)
+        {
+            if (c.InvokeRequired)
+            {
+                if (concatenate)
+                    c.Invoke(new MethodInvoker(delegate { c.Text += text; }));
+                else
+                    c.Invoke(new MethodInvoker(delegate { c.Text = text; }));
+            }
+            else
+            {
+                if (concatenate)
+                    c.Text += text;
+                else
+                    c.Text = text;
+            }
         }
 
 

@@ -33,6 +33,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MTGCCombobox, Version=1.0.0.0, Culture=neutral" />
+    <Reference Include="SEALib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Users\dave\Desktop\3-8-13 D\SEALib\SEALib\bin\Release\SEALib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -50,13 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\RIO.cs" />
-    <Compile Include="Forms\Dev\Debug.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Dev\Debug.Designer.cs">
-      <DependentUpon>Debug.cs</DependentUpon>
-    </Compile>
+    <None Include="Classes\RIO.cs" />
+    <Compile Include="Classes\cRIO.cs" />
     <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,14 +70,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\Dev\Debug.resx">
-      <DependentUpon>Debug.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OpenProject.resx">
       <DependentUpon>OpenProject.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -104,6 +102,12 @@
     <Content Include="Resources\images\largetransparent.gif" />
     <Content Include="Resources\images\sealogo.png" />
     <Content Include="Resources\images\splash.jpg" />
+    <Content Include="viper2.accdb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="viper2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\other\disk.ico" />
     <Content Include="Resources\other\file.ico" />
     <Content Include="Resources\other\folder.ico" />
