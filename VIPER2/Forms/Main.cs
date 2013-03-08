@@ -20,6 +20,7 @@ namespace VIPER2.Forms
             InitializeComponent();
             SEALib.Configuration.Init("viper2.xml");
             SEALib.Database.OLEDB.Init("viper2.accdb");
+            SEALib.Logging.Init("log.txt");
             cRIO.init();
             reindexWeights();
             reindexFLRestraints();
@@ -40,7 +41,6 @@ namespace VIPER2.Forms
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            SEALib.TCP.startConnecting("dataclient", 500);
         }
 
         private void dgvAxleWeights_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)

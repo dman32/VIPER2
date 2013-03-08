@@ -35,7 +35,7 @@
     <Reference Include="MTGCCombobox, Version=1.0.0.0, Culture=neutral" />
     <Reference Include="SEALib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Users\dave\Desktop\3-8-13 D\SEALib\SEALib\bin\Release\SEALib.dll</HintPath>
+      <HintPath>..\..\SEALib\SEALib\bin\Release\SEALib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
