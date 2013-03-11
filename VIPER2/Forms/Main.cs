@@ -36,7 +36,7 @@ namespace VIPER2.Forms
         void tmrUpdate_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             toolStripStatusLabel1.Text = cRIO.currentState.ToString() + cRIO.getBufferedSends();
-            //updateControlText(txtDescription, cRIO.missedBeats.ToString(), true);
+            updateControlText(txtDescription, cRIO.sends.ToString(), false);
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -160,6 +160,20 @@ namespace VIPER2.Forms
                 else
                     c.Text = text;
             }
+        }
+
+        private void txtProject_Enter(object sender, EventArgs e)
+        {
+            updateToolStripHelp("The name of the project");
+        }
+
+        private void clearToolStripHelp(object sender, EventArgs e)
+        {
+            updateToolStripHelp("");
+        }
+        private void updateToolStripHelp(String text)
+        {
+            tslHelp.Text = text;
         }
 
 
