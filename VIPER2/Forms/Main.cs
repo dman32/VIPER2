@@ -35,8 +35,21 @@ namespace VIPER2.Forms
 
         void tmrUpdate_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            toolStripStatusLabel1.Text = cRIO.currentState.ToString() + cRIO.getBufferedSends();
-            updateControlText(txtDescription, cRIO.sends.ToString(), false);
+            toolStripStatusLabel1.Text = cRIO.currentState.ToString();
+            /*if (cRIO.values.Count >= 8)
+            {
+                byte[] subdata = new byte[8];
+                for (int i = 0; i < 8; i++)
+                    subdata[i] = cRIO.values.Dequeue();
+                if (BitConverter.IsLittleEndian)
+                    Array.Reverse(subdata);
+                try
+                {
+                    updateControlText(txtDescription, BitConverter.ToDouble(subdata,0).ToString(), false);
+                }
+                catch { }
+            }*/
+            updateControlText(txtDescription, cRIO.values.Count.ToString(), false);
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -174,6 +187,12 @@ namespace VIPER2.Forms
         private void updateToolStripHelp(String text)
         {
             tslHelp.Text = text;
+        }
+
+        private void debugToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Debug d = new Debug();
+            d.Show();
         }
 
 
